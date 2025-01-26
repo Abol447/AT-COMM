@@ -36,7 +36,7 @@ namespace AT_COMMEND
         public Dictionary<string,string> Insert() {
             for (int i = 0; i < input.Length; i++)
                 for (int j = 0; j < key.Length; j++)
-                    if (input[i].Contains(key[j]))
+                    if(input[i].Contains(key[j]))
                         keyValuePairs.TryAdd(key[j], textinside(input[i]));
             return keyValuePairs;
         }

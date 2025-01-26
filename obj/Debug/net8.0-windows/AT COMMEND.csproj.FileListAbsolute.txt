@@ -39,3 +39,4 @@ C:\Users\User\source\repos\AT COMMEND\AT COMMEND\bin\Debug\net8.0-windows\Newton
 C:\Users\User\source\repos\AT COMMEND\AT COMMEND\bin\Debug\net8.0-windows\System.CodeDom.dll
 C:\Users\User\source\repos\AT COMMEND\AT COMMEND\bin\Debug\net8.0-windows\System.Management.dll
 C:\Users\User\source\repos\AT COMMEND\AT COMMEND\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Management.dll
+C:\Users\User\source\repos\AT COMMEND\AT COMMEND\obj\Debug\net8.0-windows\AT COMMEND.sourcelink.json

@@ -10,67 +10,60 @@ namespace AT_COMMEND
 {
     internal class VID
     {
-        private static string? x;
         private static string? deviceid; 
         private static string? device;
         public static string? vid;
         public static string? pid;
         public VID()
         {
-            x = "SELECT * FROM Win32_PnPEntity WHERE DeviceID LIKE 'USB%'";
-            searcher();
+            string query = "SELECT * FROM Win32_PnPEntity WHERE DeviceID LIKE 'USB%'";
+            searcher( query);
         }
-        private static void searcher()
+        private static void searcher(string query)
         {
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher(x);
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
             foreach (ManagementObject obj in searcher.Get())
             {
                 deviceid = obj["DeviceID"].ToString();
-                if (!string.IsNullOrEmpty(deviceid) && deviceid.Contains("vid") && deviceid.Contains("pid")) 
+                if (!string.IsNullOrEmpty(deviceid) && deviceid.Contains("VID_") && deviceid.Contains("PID_")) 
                 {
-                    device = getdevice();
-                }
-                getvidandpid();
+                    device = getdevice(deviceid);
+                    break;
+                } 
             }
-
+            getvidandpid(device);
         }
-        private static string getdevice()
+        private static string getdevice(string input)
         {
             string x = "";
-            string patern = @"//(.*?)//";
+            string patern = @"VID_\w+&PID_\w+";
             Regex regex = new Regex(patern);
-            MatchCollection collection = regex.Matches(x);
-            foreach (Match match in collection)
-            {
-                x = match.Groups[1].Value;
-            }
+            Match match = regex.Match(input);
+            x = match.Value;
             return x;
         }
-        private static void getvidandpid()
+        private static void getvidandpid(string input)
         {
-            string[] x = device.Split("&");
+            string[] x = input.Split("&");
             foreach (string y in x)
             {
-                if (y.Contains("vid"))
+                if (y.Contains("VID_"))
                     vid = getnumber(y);
-                else if (y.Contains("pid"))
+                else if (y.Contains("PID_"))
                     pid = getnumber(y);
             }
         }
         private static string getnumber(string a)
         {
-            string x ="";
-            string pattern = @"\d+";
-            Regex regex = new Regex(pattern);
-            foreach (Match match in Regex.Matches(a, pattern))
-            {
-                x = match.Value;
-            }
-            return x;
+            return a.Substring(4, 4);
         }
-        public static string getvid()
+        public  string getvid()
         {
             return vid;
+        }
+        public string getpid()
+        {
+            return pid;
         }
     }
 }

@@ -11,8 +11,10 @@ namespace AT_COMMEND
         static string[] info = new string[30];
         static AT at = new AT();
         static string recivedinfo = "";
+        static VID v;
         private void Form1_Load(object sender, EventArgs e)
         {
+            v= new VID();
             button2.Enabled = false;
         }
 
@@ -28,7 +30,7 @@ namespace AT_COMMEND
         {
             JSON js = new JSON(recivedinfo);
             Dictionary<string,string> file = js.Insert();
-            textBox1.Text = file["MN"];
+            textBox1.Text = v.getvid();
             js.saveJsonFile("data.json");
         }
     }
