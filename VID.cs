@@ -18,6 +18,7 @@ namespace AT_COMMEND
         public VID()
         {
             x = "SELECT * FROM Win32_PnPEntity WHERE DeviceID LIKE 'USB%'";
+            searcher();
         }
         private static void searcher()
         {
@@ -29,7 +30,9 @@ namespace AT_COMMEND
                 {
                     device = getdevice();
                 }
+                getvidandpid();
             }
+
         }
         private static string getdevice()
         {
@@ -42,6 +45,32 @@ namespace AT_COMMEND
                 x = match.Groups[1].Value;
             }
             return x;
+        }
+        private static void getvidandpid()
+        {
+            string[] x = device.Split("&");
+            foreach (string y in x)
+            {
+                if (y.Contains("vid"))
+                    vid = getnumber(y);
+                else if (y.Contains("pid"))
+                    pid = getnumber(y);
+            }
+        }
+        private static string getnumber(string a)
+        {
+            string x ="";
+            string pattern = @"\d+";
+            Regex regex = new Regex(pattern);
+            foreach (Match match in Regex.Matches(a, pattern))
+            {
+                x = match.Value;
+            }
+            return x;
+        }
+        public static string getvid()
+        {
+            return vid;
         }
     }
 }
