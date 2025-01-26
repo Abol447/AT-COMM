@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AT COMMEND")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a34a01cb9912cb6682b001aa0401451d6f4b8834")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+88fa2592d4de8b20a9ee7917744de66d8c3e522a")]
 [assembly: System.Reflection.AssemblyProductAttribute("AT COMMEND")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AT COMMEND")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

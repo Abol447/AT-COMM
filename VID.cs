@@ -28,7 +28,6 @@ namespace AT_COMMEND
                 if (!string.IsNullOrEmpty(deviceid) && deviceid.Contains("VID_") && deviceid.Contains("PID_")) 
                 {
                     device = getdevice(deviceid);
-                    break;
                 } 
             }
             getvidandpid(device);
