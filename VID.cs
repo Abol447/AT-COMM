@@ -25,7 +25,7 @@ namespace AT_COMMEND
             foreach (ManagementObject obj in searcher.Get())
             {
                 deviceid = obj["DeviceID"].ToString();
-                if (!string.IsNullOrEmpty(deviceid) && deviceid.Contains("VID_") && deviceid.Contains("PID_")) 
+                if (!string.IsNullOrEmpty(deviceid) && deviceid.Contains("VID_") && deviceid.Contains("PID_") && (deviceid.Contains("04F2") || deviceid.Contains("2717"))) 
                 {
                     device = getdevice(deviceid);
                 } 
