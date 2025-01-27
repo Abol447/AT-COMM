@@ -20,7 +20,10 @@ namespace AT_COMMEND
 
         private void button1_Click(object sender, EventArgs e)
         {
-            at.sendCommend("AT+DEVCONINFO");
+            if (v.productName() == "Sumsung")
+                at.sendCommend("AT+DEVCONINFO");
+            else if(v.productName() == "Xiaomi")
+                at.sendCommend("shell getprop devices -l");
             recivedinfo = at.getresult();
             textBox1.Text = recivedinfo;
             button2.Enabled = true;
@@ -28,6 +31,7 @@ namespace AT_COMMEND
 
         private void button2_Click(object sender, EventArgs e)
         {
+            
             JSON js = new JSON(recivedinfo);
             Dictionary<string, string> file = js.Insert();
             textBox1.Text = file["IMEI"];
@@ -38,7 +42,6 @@ namespace AT_COMMEND
         {
             textBox1.Text = v.getvid();
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
             textBox1.Text = v.getpid();

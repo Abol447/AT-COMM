@@ -67,5 +67,13 @@ namespace AT_COMMEND
             if (string.IsNullOrEmpty(pid)) return "no device found";
             return pid;
         }
+        public string productName()
+        {
+            if (vid == "04E8")
+                return "Sumsung";
+            else if (pid == "2717")
+                return "Xiaomi";
+            return "No product";
+        }
     }
 }
