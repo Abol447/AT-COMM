@@ -25,12 +25,13 @@ namespace AT_COMMEND
             foreach (ManagementObject obj in searcher.Get())
             {
                 deviceid = obj["DeviceID"].ToString();
-                if (!string.IsNullOrEmpty(deviceid) && deviceid.Contains("VID_") && deviceid.Contains("PID_") && (deviceid.Contains("04F2") || deviceid.Contains("2717"))) 
+                if (!string.IsNullOrEmpty(deviceid) && deviceid.Contains("VID_") && deviceid.Contains("PID_") && (deviceid.Contains("04E8") || deviceid.Contains("2717"))) 
                 {
                     device = getdevice(deviceid);
                 } 
             }
-            getvidandpid(device);
+            if (device != null)
+                getvidandpid(device);
         }
         private static string getdevice(string input)
         {
@@ -58,10 +59,12 @@ namespace AT_COMMEND
         }
         public  string getvid()
         {
+            if(string.IsNullOrEmpty(vid)) return "no device found";
             return vid;
         }
         public string getpid()
         {
+            if (string.IsNullOrEmpty(pid)) return "no device found";
             return pid;
         }
     }
