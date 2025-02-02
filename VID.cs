@@ -14,6 +14,7 @@ namespace AT_COMMEND
         private static string? device;
         public static string? vid;
         public static string? pid;
+        private static string mode;
         public VID()
         {
             string query = "SELECT * FROM Win32_PnPEntity WHERE DeviceID LIKE 'USB%'";
@@ -52,6 +53,10 @@ namespace AT_COMMEND
                 else if (y.Contains("PID_"))
                     pid = getnumber(y);
             }
+            if (pid == "6860")
+                mode = "MTP";
+            else if (pid == "685D")
+                mode = "Download Mode";
         }
         private static string getnumber(string a)
         {
@@ -71,9 +76,13 @@ namespace AT_COMMEND
         {
             if (vid == "04E8")
                 return "Sumsung";
-            else if (pid == "2717")
+            else if (vid == "2717")
                 return "Xiaomi";
             return "No product";
+        }
+        public string getMode()
+        {
+            return mode;
         }
     }
 }

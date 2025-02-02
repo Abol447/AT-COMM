@@ -9,22 +9,33 @@ namespace AT_COMMEND
             InitializeComponent();
         }
         static string[] info = new string[30];
+        static string mode = "";
         static AT at = new AT();
+        static fastbootCommend fsb = new fastbootCommend("C:\\Program Files (x86)\\ADB and Fastboot++\\adb.exe");
         static string recivedinfo = "";
         static VID v;
         private void Form1_Load(object sender, EventArgs e)
         {
             v = new VID();
             button2.Enabled = false;
+            mode = v.getMode();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (v.productName() == "Sumsung")
-                at.sendCommend("AT+DEVCONINFO");
-            else if(v.productName() == "Xiaomi")
-                at.sendCommend("shell getprop devices -l");
-            recivedinfo = at.getresult();
+            {
+                if (mode == "MTP")
+                    at.sendCommend("AT+DEVCONINFO");
+                else if (mode == "Download Mode")
+                    at.sendCommend("AT+QPOWD=1");
+                recivedinfo = at.getresult();
+            }
+            else if (v.productName() == "Xiaomi")
+            {
+                fsb.process("devices");
+                recivedinfo = fsb.result();
+            }
             textBox1.Text = recivedinfo;
             button2.Enabled = true;
         }
@@ -44,7 +55,7 @@ namespace AT_COMMEND
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            textBox1.Text = v.getpid();
+            textBox1.Text = v.getpid() +"/"+ mode;
         }
     }
 }
