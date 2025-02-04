@@ -26,10 +26,15 @@ namespace AT_COMMEND
             if (v.productName() == "Sumsung")
             {
                 if (mode == "MTP")
+                {
                     at.sendCommend("AT+DEVCONINFO");
+                    recivedinfo = at.getresult();
+                }
                 else if (mode == "Download Mode")
-                    at.sendCommend("AT+QPOWD=1");
-                recivedinfo = at.getresult();
+                {
+                    at.sendCommend("DVIF");
+                    recivedinfo = at.getresult();
+                }
             }
             else if (v.productName() == "Xiaomi")
             {
