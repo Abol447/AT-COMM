@@ -8,7 +8,7 @@ namespace AT_COMMEND
         {
             InitializeComponent();
         }
-        string x;
+
         static string[] info = new string[30];
         static string mode = "";
         static AT at = new AT();
