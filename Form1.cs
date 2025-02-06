@@ -17,7 +17,7 @@ namespace AT_COMMEND
         private void Form1_Load(object sender, EventArgs e)
         {
             v = new VID();
-            button2.Enabled = false;
+            IMEI.Enabled = false;
             mode = v.getMode();
         }
 
@@ -28,13 +28,12 @@ namespace AT_COMMEND
                 if (mode == "MTP")
                 {
                     at.sendCommend("AT+DEVCONINFO");
-                    recivedinfo = at.getresult();
                 }
                 else if (mode == "Download Mode")
                 {
                     at.sendCommend("DVIF");
-                    recivedinfo = at.getresult();
                 }
+                recivedinfo = at.getresult();
             }
             else if (v.productName() == "Xiaomi")
             {
@@ -42,15 +41,14 @@ namespace AT_COMMEND
                 recivedinfo = fsb.result();
             }
             textBox1.Text = recivedinfo;
-            button2.Enabled = true;
+            IMEI.Enabled = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
-            JSON js = new JSON(recivedinfo);
+            JSON js = new JSON(recivedinfo,mode);
             Dictionary<string, string> file = js.Insert();
-            textBox1.Text = file["IMEI"];
+            textBox1.Text = file["MN"];
             js.saveJsonFile("data.json");
         }
 

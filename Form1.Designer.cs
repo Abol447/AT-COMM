@@ -30,7 +30,7 @@
         {
             button1 = new Button();
             textBox1 = new TextBox();
-            button2 = new Button();
+            IMEI = new Button();
             button3 = new Button();
             button4 = new Button();
             SuspendLayout();
@@ -53,15 +53,15 @@
             textBox1.Size = new Size(363, 269);
             textBox1.TabIndex = 1;
             // 
-            // button2
+            // IMEI
             // 
-            button2.Location = new Point(88, 105);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 29);
-            button2.TabIndex = 2;
-            button2.Text = "IMEI";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            IMEI.Location = new Point(88, 105);
+            IMEI.Name = "IMEI";
+            IMEI.Size = new Size(94, 29);
+            IMEI.TabIndex = 2;
+            IMEI.Text = "IMEI";
+            IMEI.UseVisualStyleBackColor = true;
+            IMEI.Click += button2_Click;
             // 
             // button3
             // 
@@ -90,7 +90,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(button4);
             Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(IMEI);
             Controls.Add(textBox1);
             Controls.Add(button1);
             Name = "Form1";
@@ -104,7 +104,7 @@
 
         private Button button1;
         private TextBox textBox1;
-        private Button button2;
+        private Button IMEI;
         private Button button3;
         private Button button4;
     }
